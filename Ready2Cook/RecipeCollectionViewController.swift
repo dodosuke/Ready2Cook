@@ -13,14 +13,22 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var imageURLs: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.allowsMultipleSelection = true
         
         collectionViewFormat()
+        
+        F2FClient.sharedInstance().getURLsFromF2F {(URLs, errorString) in
+            if errorString == nil {
+                print(URLs!.count)
+                self.imageURLs = URLs!
+            }
+        }
         
     }
     
@@ -33,6 +41,15 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecipeCollectionViewCell", forIndexPath: indexPath) as! RecipeCollectionViewCell
+        
+        if imageURLs != [] {
+            let imageURL = NSURL(string: imageURLs[indexPath.row])
+            if let imageData = NSData(contentsOfURL: imageURL!) {
+                cell.imageForRecipe.image = UIImage(data: imageData)
+            } else {
+                
+            }
+        }
         
         return cell
     
