@@ -10,9 +10,10 @@ import UIKit
 
 class F2FClient: NSObject {
     
-    func getURLsFromF2F(completionHandlerForF2F: (URLs: [String]?, errorString: String?) -> Void) {
+    func getURLsFromF2F(completionHandlerForF2F: (count: Int?, URLs: [String]?, titles: [String]?, errorString: String?) -> Void) {
         
         var imageURLs:[String] = []
+        var titles:[String] = []
         
         let methodParameters = [
             Constants.F2FParameterKeys.APIKey: Constants.F2FParameterValues.APIKey,
@@ -29,7 +30,7 @@ class F2FClient: NSObject {
             // if an error occurs, print it and re-enable the UI
             func sendError(error: String) {
                 print(error)
-                completionHandlerForF2F(URLs: nil, errorString: error)
+                completionHandlerForF2F(count: nil, URLs: nil, titles: nil, errorString: error)
             }
             
             /* GUARD: Was there an error? */
@@ -55,15 +56,21 @@ class F2FClient: NSObject {
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
                 print(parsedResult)
-                if let results = parsedResult["recipes"] as? [[String:AnyObject]] {
-                    for result in results {
-                        if let imageURL = result["image_url"] as? String {
-                            imageURLs.append(imageURL)
+                if let count = parsedResult["count"] as? Int {
+                    if let results = parsedResult["recipes"] as? [[String:AnyObject]] {
+                        for result in results {
+                            if let imageURL = result["image_url"] as? String {
+                                imageURLs.append(imageURL)
+                            }
+                            if let title = result["title"] as? String {
+                                titles.append(title)
+                            }
                         }
                     }
+                    
+                    completionHandlerForF2F(count: count, URLs: imageURLs, titles: titles, errorString: nil)
+
                 }
-                
-                completionHandlerForF2F(URLs: imageURLs, errorString: nil)
                 
             } catch {
                 sendError("Could not parse the data as JSON: '\(data)'")

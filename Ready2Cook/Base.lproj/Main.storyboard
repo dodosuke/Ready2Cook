@@ -3,9 +3,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--What's in Fridge?-->
+        <!--What's in your Fridge?-->
         <scene sceneID="al5-7m-TQJ">
             <objects>
                 <tableViewController id="PcJ-NM-Svq" customClass="FridgeTableViewController" customModule="Ready2Cook" customModuleProvider="target" sceneMemberID="viewController">
@@ -28,7 +29,7 @@
                             <outlet property="delegate" destination="PcJ-NM-Svq" id="eX6-xO-F77"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="What's in Fridge?" id="Op7-qM-e6Z">
+                    <navigationItem key="navigationItem" title="What's in your Fridge?" id="Op7-qM-e6Z">
                         <barButtonItem key="leftBarButtonItem" title="Hint" id="7Ss-w4-beW">
                             <connections>
                                 <action selector="callHint:" destination="PcJ-NM-Svq" id="3xt-Ow-NyF"/>
@@ -63,7 +64,7 @@
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Gd-ui-Jfx">
                                 <rect key="frame" x="0.0" y="108" width="600" height="443"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oSz-Rh-vWd">
                                     <size key="itemSize" width="168" height="143"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -78,22 +79,40 @@
                                             <rect key="frame" x="0.0" y="0.0" width="168" height="143"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGI-K3-mGG">
-                                                    <rect key="frame" x="0.0" y="7" width="168" height="128"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SGI-K3-mGG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="168" height="123"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Cik-27-sea">
                                                     <rect key="frame" x="74" y="62" width="20" height="20"/>
                                                 </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khi-q7-IMU">
+                                                    <rect key="frame" x="0.0" y="122" width="168" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="gBC-w3-Wf5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="SGI-K3-mGG" firstAttribute="centerY" secondItem="0nz-h7-hCD" secondAttribute="centerY" constant="-10" id="81z-pi-QnO"/>
+                                            <constraint firstItem="SGI-K3-mGG" firstAttribute="height" secondItem="0nz-h7-hCD" secondAttribute="height" constant="-20" id="Ags-oy-Bsl"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="khi-q7-IMU" secondAttribute="bottom" constant="-8" id="CSJ-s8-eZG"/>
+                                            <constraint firstItem="SGI-K3-mGG" firstAttribute="centerX" secondItem="0nz-h7-hCD" secondAttribute="centerX" id="JpH-w6-7OM"/>
+                                            <constraint firstItem="SGI-K3-mGG" firstAttribute="width" secondItem="0nz-h7-hCD" secondAttribute="width" id="Vae-Ty-akk"/>
                                             <constraint firstItem="Cik-27-sea" firstAttribute="centerY" secondItem="0nz-h7-hCD" secondAttribute="centerY" id="bgd-CG-n4e"/>
+                                            <constraint firstItem="khi-q7-IMU" firstAttribute="centerX" secondItem="0nz-h7-hCD" secondAttribute="centerX" id="hKa-Zr-Ndf"/>
+                                            <constraint firstItem="khi-q7-IMU" firstAttribute="width" secondItem="0nz-h7-hCD" secondAttribute="width" id="lre-O9-IFO"/>
                                             <constraint firstItem="Cik-27-sea" firstAttribute="centerX" secondItem="0nz-h7-hCD" secondAttribute="centerX" id="z7l-u8-XSs"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="activityIndicator" destination="Cik-27-sea" id="KsA-Qo-uJQ"/>
                                             <outlet property="imageForRecipe" destination="SGI-K3-mGG" id="KUm-mv-Xa9"/>
+                                            <outlet property="title" destination="khi-q7-IMU" id="uZd-84-IKY"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

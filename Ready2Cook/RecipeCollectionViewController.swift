@@ -14,6 +14,7 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var collectionView: UICollectionView!
     
     var imageURLs: [String] = []
+    var titles: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,18 +24,24 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
         
         collectionViewFormat()
         
-        F2FClient.sharedInstance().getURLsFromF2F {(URLs, errorString) in
-            if errorString == nil {
-                print(URLs!.count)
-                self.imageURLs = URLs!
+        dispatch_async(dispatch_get_main_queue()) {
+            SwiftLoading().showLoading()
+            F2FClient.sharedInstance().getURLsFromF2F {(URLs, titles, errorString) in
+                if errorString == nil {
+                    print(URLs!.count)
+                    self.imageURLs = URLs!
+                    self.titles = titles!
+                }
             }
+            SwiftLoading().hideLoading()
         }
         
     }
     
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 30
+        return 9
         
     }
     
@@ -46,6 +53,7 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
             let imageURL = NSURL(string: imageURLs[indexPath.row])
             if let imageData = NSData(contentsOfURL: imageURL!) {
                 cell.imageForRecipe.image = UIImage(data: imageData)
+                cell.title.text = titles[indexPath.row]
             } else {
                 
             }
@@ -55,9 +63,10 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
     
     }
     
+    
     private func collectionViewFormat() {
         
-        let space: CGFloat = 3.0
+        let space: CGFloat = 2.0
         let dimension: CGFloat = (view.frame.size.width - (2 * space)) / 3.0
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
