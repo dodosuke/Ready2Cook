@@ -11,7 +11,6 @@ import UIKit
 class RecipeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageForRecipe: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var title: UILabel!
     
 }

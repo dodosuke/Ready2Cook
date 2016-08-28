@@ -10,10 +10,11 @@ import UIKit
 
 class F2FClient: NSObject {
     
-    func getURLsFromF2F(completionHandlerForF2F: (count: Int?, URLs: [String]?, titles: [String]?, errorString: String?) -> Void) {
+    func getURLsFromF2F(completionHandlerForF2F: (count: Int?, URLs: [String]?, titles: [String]?, recipeIDs: [String]?, errorString: String?) -> Void) {
         
         var imageURLs:[String] = []
         var titles:[String] = []
+        var recipeIDs:[String] = []
         
         let methodParameters = [
             Constants.F2FParameterKeys.APIKey: Constants.F2FParameterValues.APIKey,
@@ -30,7 +31,7 @@ class F2FClient: NSObject {
             // if an error occurs, print it and re-enable the UI
             func sendError(error: String) {
                 print(error)
-                completionHandlerForF2F(count: nil, URLs: nil, titles: nil, errorString: error)
+                completionHandlerForF2F(count: nil, URLs: nil, titles: nil, recipeIDs: nil, errorString: error)
             }
             
             /* GUARD: Was there an error? */
@@ -65,10 +66,13 @@ class F2FClient: NSObject {
                             if let title = result["title"] as? String {
                                 titles.append(title)
                             }
+                            if let recipeID = result["recipe_id"] as? String {
+                                recipeIDs.append(recipeID)
+                            }
                         }
                     }
                     
-                    completionHandlerForF2F(count: count, URLs: imageURLs, titles: titles, errorString: nil)
+                    completionHandlerForF2F(count: count, URLs: imageURLs, titles: titles, recipeIDs: recipeIDs, errorString: nil)
 
                 }
                 

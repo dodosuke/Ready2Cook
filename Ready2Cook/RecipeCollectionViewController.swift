@@ -13,8 +13,10 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var count:Int = 0
     var imageURLs: [String] = []
     var titles: [String] = []
+    var recipeIDs: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,24 +26,16 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
         
         collectionViewFormat()
         
-        dispatch_async(dispatch_get_main_queue()) {
-            SwiftLoading().showLoading()
-            F2FClient.sharedInstance().getURLsFromF2F {(URLs, titles, errorString) in
-                if errorString == nil {
-                    print(URLs!.count)
-                    self.imageURLs = URLs!
-                    self.titles = titles!
-                }
-            }
-            SwiftLoading().hideLoading()
-        }
-        
+        searchRecipe()
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        <#code#>
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 9
+        return count
         
     }
     
@@ -50,19 +44,44 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecipeCollectionViewCell", forIndexPath: indexPath) as! RecipeCollectionViewCell
         
         if imageURLs != [] {
-            let imageURL = NSURL(string: imageURLs[indexPath.row])
-            if let imageData = NSData(contentsOfURL: imageURL!) {
-                cell.imageForRecipe.image = UIImage(data: imageData)
-                cell.title.text = titles[indexPath.row]
-            } else {
-                
+            dispatch_async(dispatch_get_main_queue()) {
+                let imageURL = NSURL(string: self.imageURLs[indexPath.row])
+                if let imageData = NSData(contentsOfURL: imageURL!) {
+                    cell.imageForRecipe.image = UIImage(data: imageData)
+                    cell.title.text = self.titles[indexPath.row]
+                }
             }
+            
         }
         
         return cell
     
     }
     
+    func searchRecipe() {
+        
+        SwiftLoading().showLoading()
+        F2FClient.sharedInstance().getURLsFromF2F {(count, URLs, titles, recipeIDs, errorString) in
+            if errorString == nil {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.count = count!
+                    self.imageURLs = URLs!
+                    self.titles = titles!
+                    self.recipeIDs = recipeIDs!
+                    self.collectionView.reloadData()
+                    SwiftLoading().hideLoading()
+                }
+            }
+        }
+
+        
+    }
+    
+    @IBAction func refreshRecipe(sender: AnyObject) {
+        
+        searchRecipe()
+        
+    }
     
     private func collectionViewFormat() {
         

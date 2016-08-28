@@ -13,7 +13,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="HeS-YQ-Vv5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.7898647231543624" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FridgeTableViewCell" id="rET-W4-2st">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
@@ -44,7 +44,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2g-PZ-ip9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="483"/>
+            <point key="canvasLocation" x="1344" y="483"/>
         </scene>
         <!--Umm...Looks Yummy-->
         <scene sceneID="qgi-ux-066">
@@ -64,7 +64,7 @@
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Gd-ui-Jfx">
                                 <rect key="frame" x="0.0" y="108" width="600" height="443"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.67279257550000005" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oSz-Rh-vWd">
                                     <size key="itemSize" width="168" height="143"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -81,20 +81,19 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SGI-K3-mGG">
                                                     <rect key="frame" x="0.0" y="0.0" width="168" height="123"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Cik-27-sea">
-                                                    <rect key="frame" x="74" y="62" width="20" height="20"/>
-                                                </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khi-q7-IMU">
                                                     <rect key="frame" x="0.0" y="122" width="168" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="gBC-w3-Wf5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qu6-0L-B0r">
+                                                    <rect key="frame" x="74" y="51" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -102,15 +101,14 @@
                                             <constraint firstItem="SGI-K3-mGG" firstAttribute="centerY" secondItem="0nz-h7-hCD" secondAttribute="centerY" constant="-10" id="81z-pi-QnO"/>
                                             <constraint firstItem="SGI-K3-mGG" firstAttribute="height" secondItem="0nz-h7-hCD" secondAttribute="height" constant="-20" id="Ags-oy-Bsl"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="khi-q7-IMU" secondAttribute="bottom" constant="-8" id="CSJ-s8-eZG"/>
+                                            <constraint firstItem="qu6-0L-B0r" firstAttribute="centerX" secondItem="SGI-K3-mGG" secondAttribute="centerX" id="Dcc-mL-SAH"/>
                                             <constraint firstItem="SGI-K3-mGG" firstAttribute="centerX" secondItem="0nz-h7-hCD" secondAttribute="centerX" id="JpH-w6-7OM"/>
                                             <constraint firstItem="SGI-K3-mGG" firstAttribute="width" secondItem="0nz-h7-hCD" secondAttribute="width" id="Vae-Ty-akk"/>
-                                            <constraint firstItem="Cik-27-sea" firstAttribute="centerY" secondItem="0nz-h7-hCD" secondAttribute="centerY" id="bgd-CG-n4e"/>
+                                            <constraint firstItem="qu6-0L-B0r" firstAttribute="centerY" secondItem="SGI-K3-mGG" secondAttribute="centerY" id="bdd-FH-7px"/>
                                             <constraint firstItem="khi-q7-IMU" firstAttribute="centerX" secondItem="0nz-h7-hCD" secondAttribute="centerX" id="hKa-Zr-Ndf"/>
                                             <constraint firstItem="khi-q7-IMU" firstAttribute="width" secondItem="0nz-h7-hCD" secondAttribute="width" id="lre-O9-IFO"/>
-                                            <constraint firstItem="Cik-27-sea" firstAttribute="centerX" secondItem="0nz-h7-hCD" secondAttribute="centerX" id="z7l-u8-XSs"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="activityIndicator" destination="Cik-27-sea" id="KsA-Qo-uJQ"/>
                                             <outlet property="imageForRecipe" destination="SGI-K3-mGG" id="KUm-mv-Xa9"/>
                                             <outlet property="title" destination="khi-q7-IMU" id="uZd-84-IKY"/>
                                         </connections>
@@ -118,7 +116,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.67279257550335569" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="0Gd-ui-Jfx" firstAttribute="top" secondItem="ecF-zZ-UXk" secondAttribute="bottom" constant="44" id="9Ni-q4-z60"/>
                             <constraint firstItem="dJh-Sb-ydl" firstAttribute="width" secondItem="WLI-2N-AMH" secondAttribute="width" id="EDM-Oz-uwY"/>
@@ -129,7 +127,13 @@
                             <constraint firstItem="dJh-Sb-ydl" firstAttribute="centerX" secondItem="WLI-2N-AMH" secondAttribute="centerX" id="zg4-oj-TVW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Umm...Looks Yummy" id="Cnd-N0-7t5"/>
+                    <navigationItem key="navigationItem" title="Umm...Looks Yummy" id="Cnd-N0-7t5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="dkb-7H-utk">
+                            <connections>
+                                <action selector="refreshRecipe:" destination="IxW-KQ-q5H" id="bvu-5H-JNb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="0Gd-ui-Jfx" id="zyJ-ex-L6y"/>
                         <outlet property="flowLayout" destination="oSz-Rh-vWd" id="3Wa-1S-n8Q"/>
@@ -137,7 +141,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Per-tO-P08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="1194"/>
+            <point key="canvasLocation" x="1344" y="1194"/>
+        </scene>
+        <!--Recipe-->
+        <scene sceneID="lkf-gV-zpP">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="vaG-Lu-fPh" customClass="DetailViewController" customModule="Ready2Cook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k87-DQ-7tc"/>
+                        <viewControllerLayoutGuide type="bottom" id="10t-YK-5Uh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jnu-U1-gu1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Recipe" id="zBb-mc-rNL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Www-z2-wQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1344" y="2633"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zsD-2H-oNa">
@@ -212,7 +235,23 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIG-ag-FN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="1890"/>
+            <point key="canvasLocation" x="1344" y="1890"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1V3-l6-XrY">
+            <objects>
+                <navigationController id="No1-vh-tsw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4kS-Cy-wmy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vaG-Lu-fPh" kind="relationship" relationship="rootViewController" id="qNv-uB-jJp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yj8-kN-qt6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="588" y="2633"/>
         </scene>
         <!--Fridge-->
         <scene sceneID="TrS-40-1n0">

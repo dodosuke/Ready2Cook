@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C64C61A01D731FDE006F2376 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C619F1D731FDE006F2376 /* DetailViewController.swift */; };
 		C6784BB31D707D1B00D4687E /* F2FClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6784BB21D707D1B00D4687E /* F2FClient.swift */; };
 		C6784BB71D7092AD00D4687E /* FridgeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6784BB61D7092AD00D4687E /* FridgeTableViewController.swift */; };
 		C6784BB91D7092CC00D4687E /* RecipeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6784BB81D7092CC00D4687E /* RecipeCollectionViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C64C619F1D731FDE006F2376 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C6784BB21D707D1B00D4687E /* F2FClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F2FClient.swift; sourceTree = "<group>"; };
 		C6784BB61D7092AD00D4687E /* FridgeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeTableViewController.swift; sourceTree = "<group>"; };
 		C6784BB81D7092CC00D4687E /* RecipeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				C6784BB61D7092AD00D4687E /* FridgeTableViewController.swift */,
 				C6784BB81D7092CC00D4687E /* RecipeCollectionViewController.swift */,
 				C6784BBA1D7092E900D4687E /* BookmarksCollectionViewController.swift */,
+				C64C619F1D731FDE006F2376 /* DetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				C6784BBF1D70956C00D4687E /* BookmarksCollectionViewCell.swift in Sources */,
 				C6784BBD1D70955800D4687E /* RecipeCollectionViewCell.swift in Sources */,
 				C6784BC71D72D84600D4687E /* LoadingProxy.swift in Sources */,
+				C64C61A01D731FDE006F2376 /* DetailViewController.swift in Sources */,
 				C6784BB31D707D1B00D4687E /* F2FClient.swift in Sources */,
 				C6784BC51D71E30C00D4687E /* Constants.swift in Sources */,
 			);
