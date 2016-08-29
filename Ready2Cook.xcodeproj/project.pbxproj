@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		C64C61A01D731FDE006F2376 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C619F1D731FDE006F2376 /* DetailViewController.swift */; };
+		C64C61A41D745D77006F2376 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C64C61A21D745D77006F2376 /* Model.xcdatamodeld */; };
+		C64C61A91D747394006F2376 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C61A51D747394006F2376 /* Recipe+CoreDataProperties.swift */; };
+		C64C61AA1D747394006F2376 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C61A61D747394006F2376 /* Recipe.swift */; };
+		C64C61AB1D747394006F2376 /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C61A71D747394006F2376 /* Ingredient+CoreDataProperties.swift */; };
+		C64C61AC1D747394006F2376 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C61A81D747394006F2376 /* Ingredient.swift */; };
 		C6784BB31D707D1B00D4687E /* F2FClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6784BB21D707D1B00D4687E /* F2FClient.swift */; };
 		C6784BB71D7092AD00D4687E /* FridgeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6784BB61D7092AD00D4687E /* FridgeTableViewController.swift */; };
 		C6784BB91D7092CC00D4687E /* RecipeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6784BB81D7092CC00D4687E /* RecipeCollectionViewController.swift */; };
@@ -24,6 +29,11 @@
 
 /* Begin PBXFileReference section */
 		C64C619F1D731FDE006F2376 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C64C61A31D745D77006F2376 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		C64C61A51D747394006F2376 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Recipe+CoreDataProperties.swift"; path = "../Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C64C61A61D747394006F2376 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = ../Recipe.swift; sourceTree = "<group>"; };
+		C64C61A71D747394006F2376 /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ingredient+CoreDataProperties.swift"; path = "../Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C64C61A81D747394006F2376 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ingredient.swift; path = ../Ingredient.swift; sourceTree = "<group>"; };
 		C6784BB21D707D1B00D4687E /* F2FClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F2FClient.swift; sourceTree = "<group>"; };
 		C6784BB61D7092AD00D4687E /* FridgeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeTableViewController.swift; sourceTree = "<group>"; };
 		C6784BB81D7092CC00D4687E /* RecipeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -51,9 +61,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C64C61A11D745D3D006F2376 /* CoreDataStack */ = {
+			isa = PBXGroup;
+			children = (
+				C64C61A51D747394006F2376 /* Recipe+CoreDataProperties.swift */,
+				C64C61A61D747394006F2376 /* Recipe.swift */,
+				C64C61A71D747394006F2376 /* Ingredient+CoreDataProperties.swift */,
+				C64C61A81D747394006F2376 /* Ingredient.swift */,
+				C64C61A21D745D77006F2376 /* Model.xcdatamodeld */,
+			);
+			name = CoreDataStack;
+			sourceTree = "<group>";
+		};
 		C6784BB01D707CFA00D4687E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C64C61A11D745D3D006F2376 /* CoreDataStack */,
 				C6784BB21D707D1B00D4687E /* F2FClient.swift */,
 				C6784BBC1D70955800D4687E /* RecipeCollectionViewCell.swift */,
 				C6784BBE1D70956C00D4687E /* BookmarksCollectionViewCell.swift */,
@@ -186,13 +209,18 @@
 			files = (
 				C6784BBB1D7092E900D4687E /* BookmarksCollectionViewController.swift in Sources */,
 				C6784BB91D7092CC00D4687E /* RecipeCollectionViewController.swift in Sources */,
+				C64C61AC1D747394006F2376 /* Ingredient.swift in Sources */,
 				C6784BB71D7092AD00D4687E /* FridgeTableViewController.swift in Sources */,
 				C6DFFFE31D6C7908003AC26C /* AppDelegate.swift in Sources */,
 				C6784BBF1D70956C00D4687E /* BookmarksCollectionViewCell.swift in Sources */,
 				C6784BBD1D70955800D4687E /* RecipeCollectionViewCell.swift in Sources */,
 				C6784BC71D72D84600D4687E /* LoadingProxy.swift in Sources */,
 				C64C61A01D731FDE006F2376 /* DetailViewController.swift in Sources */,
+				C64C61AB1D747394006F2376 /* Ingredient+CoreDataProperties.swift in Sources */,
 				C6784BB31D707D1B00D4687E /* F2FClient.swift in Sources */,
+				C64C61A91D747394006F2376 /* Recipe+CoreDataProperties.swift in Sources */,
+				C64C61AA1D747394006F2376 /* Recipe.swift in Sources */,
+				C64C61A41D745D77006F2376 /* Model.xcdatamodeld in Sources */,
 				C6784BC51D71E30C00D4687E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +376,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C64C61A21D745D77006F2376 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C64C61A31D745D77006F2376 /* Model.xcdatamodel */,
+			);
+			currentVersion = C64C61A31D745D77006F2376 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C6DFFFD71D6C7908003AC26C /* Project object */;
 }

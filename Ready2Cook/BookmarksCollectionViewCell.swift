@@ -10,5 +10,7 @@ import UIKit
 
 class BookmarksCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var imageForRecipe: UIImageView!
+    @IBOutlet weak var title: UILabel!
     
 }

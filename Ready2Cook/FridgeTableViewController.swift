@@ -87,7 +87,7 @@ class FridgeTableViewController: UITableViewController, UITextFieldDelegate, UIA
         
         let defaultAction:UIAlertAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default, handler:{(action:UIAlertAction!) -> Void in
             if let textField = alert.textFields {
-                self.items.append(textField[0].text!)
+                self.items.append(textField[0].text!.lowercaseString)
                 self.ud.setObject(self.items, forKey: "items")
             }
             self.dismissViewControllerAnimated(true, completion: nil)

@@ -14,7 +14,8 @@ struct Constants {
     struct F2F {
         static let APIScheme = "http"
         static let APIHost = "food2fork.com"
-        static let APIPath = "/api/search"
+        static let APIPathSearch = "/api/search"
+        static let APIPathGet = "/api/get"
         
     }
     
@@ -23,11 +24,17 @@ struct Constants {
         static let APIKey = "key"
         static let Query = "q"
         static let Page = "page"
+        static let RecipeID = "rId"
     }
     
     // MARK: Flickr Parameter Values
     struct F2FParameterValues {
         static let APIKey = "50d489ef52311b8d0b403b58a398090a"
+    }
+    
+    enum Method {
+        case SEARCH
+        case GET
     }
 
 }

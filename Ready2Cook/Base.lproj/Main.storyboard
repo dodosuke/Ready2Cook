@@ -88,7 +88,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="gBC-w3-Wf5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qu6-0L-B0r">
@@ -143,25 +143,6 @@
             </objects>
             <point key="canvasLocation" x="1344" y="1194"/>
         </scene>
-        <!--Recipe-->
-        <scene sceneID="lkf-gV-zpP">
-            <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="vaG-Lu-fPh" customClass="DetailViewController" customModule="Ready2Cook" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="k87-DQ-7tc"/>
-                        <viewControllerLayoutGuide type="bottom" id="10t-YK-5Uh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Jnu-U1-gu1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Recipe" id="zBb-mc-rNL"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Www-z2-wQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1344" y="2633"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="zsD-2H-oNa">
             <objects>
@@ -179,11 +160,11 @@
             </objects>
             <point key="canvasLocation" x="588" y="1194"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Favorites-->
         <scene sceneID="ebC-lM-hdn">
             <objects>
                 <navigationController id="E2W-CP-VYD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="ggT-j0-Cp4"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="fav" id="ggT-j0-Cp4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0uy-ae-gwV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -203,7 +184,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8mk-F5-LaR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.84168415619530201" green="1" blue="0.67826133150335577" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xsj-XV-dkf">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -237,6 +218,45 @@
             </objects>
             <point key="canvasLocation" x="1344" y="1890"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="IAx-z0-T53">
+            <objects>
+                <tableViewController storyboardIdentifier="DetailViewController" id="nxV-9z-IWJ" customClass="DetailViewController" customModule="Ready2Cook" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ul4-ju-2Pm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailTableViewCell" id="QcG-Tl-8Lv">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QcG-Tl-8Lv" id="epo-0I-vNB">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="1" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nxV-9z-IWJ" id="Imw-s2-ASE"/>
+                            <outlet property="delegate" destination="nxV-9z-IWJ" id="f2u-DS-wJL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Acc-3v-Hra">
+                        <barButtonItem key="rightBarButtonItem" image="fav" id="Ted-aq-VTY">
+                            <connections>
+                                <action selector="fav:" destination="nxV-9z-IWJ" id="dTf-Tp-NlI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="rightBarButton" destination="Ted-aq-VTY" id="1o0-RX-23A"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nPV-pC-LOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1344" y="2633"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1V3-l6-XrY">
             <objects>
@@ -246,7 +266,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vaG-Lu-fPh" kind="relationship" relationship="rootViewController" id="qNv-uB-jJp"/>
+                        <segue destination="nxV-9z-IWJ" kind="relationship" relationship="rootViewController" id="J6V-uW-JVv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yj8-kN-qt6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,5 +312,6 @@
     </scenes>
     <resources>
         <image name="Fridge" width="29" height="29"/>
+        <image name="fav" width="29" height="29"/>
     </resources>
 </document>

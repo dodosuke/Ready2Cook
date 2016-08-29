@@ -13,6 +13,8 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let ud = NSUserDefaults.standardUserDefaults()
+    var items:[String] = []
     var count:Int = 0
     var imageURLs: [String] = []
     var titles: [String] = []
@@ -28,9 +30,25 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
         
         searchRecipe()
     }
+
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        <#code#>
+        
+        let detailViewer = storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        let recipeId = recipeIDs[indexPath.row]
+        
+        SwiftLoading().showLoading()
+        F2FClient.sharedInstance().getIngredientsFromF2F(recipeId) {(ingredients, source, errorString) in
+            if errorString == nil {
+                dispatch_async(dispatch_get_main_queue()) {
+                    print(ingredients,source)
+                    detailViewer.ingredients = ingredients!
+                    detailViewer.source = source!
+                    SwiftLoading().hideLoading()
+                    self.navigationController!.pushViewController(detailViewer, animated: true)
+                }
+            }
+        }
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -60,8 +78,12 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
     
     func searchRecipe() {
         
+        if let udID = ud.objectForKey("items") {
+            items = udID as! [String]
+        }
+        
         SwiftLoading().showLoading()
-        F2FClient.sharedInstance().getURLsFromF2F {(count, URLs, titles, recipeIDs, errorString) in
+        F2FClient.sharedInstance().getURLsFromF2F(items) {(count, URLs, titles, recipeIDs, errorString) in
             if errorString == nil {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.count = count!
