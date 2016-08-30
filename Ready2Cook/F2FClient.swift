@@ -55,17 +55,17 @@ class F2FClient: NSObject {
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-                print(parsedResult)
-                if let count = parsedResult["count"] as? Int {
-                    if let results = parsedResult["recipes"] as? [[String:AnyObject]] {
+
+                if let count = parsedResult[Constants.F2FResponseKeys.Count] as? Int {
+                    if let results = parsedResult[Constants.F2FResponseKeys.Recipes] as? [[String:AnyObject]] {
                         for result in results {
-                            if let imageURL = result["image_url"] as? String {
+                            if let imageURL = result[Constants.F2FResponseKeys.ImageURL] as? String {
                                 imageURLs.append(imageURL)
                             }
-                            if let title = result["title"] as? String {
+                            if let title = result[Constants.F2FResponseKeys.Title] as? String {
                                 titles.append(title)
                             }
-                            if let recipeID = result["recipe_id"] as? String {
+                            if let recipeID = result[Constants.F2FResponseKeys.RecipeID] as? String {
                                 recipeIDs.append(recipeID)
                             }
                         }
@@ -131,12 +131,12 @@ class F2FClient: NSObject {
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-                print(parsedResult)
-                if let results = parsedResult["recipe"] as? [String:AnyObject] {
-                    if let ingredientsList = results["ingredients"] as? [String] {
+                
+                if let results = parsedResult[Constants.F2FResponseKeys.Recipe] as? [String:AnyObject] {
+                    if let ingredientsList = results[Constants.F2FResponseKeys.Ingredients] as? [String] {
                         ingredients = ingredientsList
                     }
-                    if let source_url = results["source_url"] as? String {
+                    if let source_url = results[Constants.F2FResponseKeys.SourceURL] as? String {
                         sourceURL = source_url
                     }
                 }

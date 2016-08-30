@@ -13,6 +13,9 @@
 		C64C61AA1D747394006F2376 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C61A61D747394006F2376 /* Recipe.swift */; };
 		C64C61AB1D747394006F2376 /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C61A71D747394006F2376 /* Ingredient+CoreDataProperties.swift */; };
 		C64C61AC1D747394006F2376 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C61A81D747394006F2376 /* Ingredient.swift */; };
+		C64C61AE1D747524006F2376 /* CoreDataDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C61AD1D747524006F2376 /* CoreDataDetailVC.swift */; };
+		C64C61B01D7477EE006F2376 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C61AF1D7477EE006F2376 /* CoreDataStack.swift */; };
+		C64C61B21D747D1A006F2376 /* CoreDataBookmarksCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C61B11D747D1A006F2376 /* CoreDataBookmarksCVC.swift */; };
 		C6784BB31D707D1B00D4687E /* F2FClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6784BB21D707D1B00D4687E /* F2FClient.swift */; };
 		C6784BB71D7092AD00D4687E /* FridgeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6784BB61D7092AD00D4687E /* FridgeTableViewController.swift */; };
 		C6784BB91D7092CC00D4687E /* RecipeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6784BB81D7092CC00D4687E /* RecipeCollectionViewController.swift */; };
@@ -34,6 +37,9 @@
 		C64C61A61D747394006F2376 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = ../Recipe.swift; sourceTree = "<group>"; };
 		C64C61A71D747394006F2376 /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ingredient+CoreDataProperties.swift"; path = "../Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C64C61A81D747394006F2376 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ingredient.swift; path = ../Ingredient.swift; sourceTree = "<group>"; };
+		C64C61AD1D747524006F2376 /* CoreDataDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDetailVC.swift; sourceTree = "<group>"; };
+		C64C61AF1D7477EE006F2376 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		C64C61B11D747D1A006F2376 /* CoreDataBookmarksCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataBookmarksCVC.swift; sourceTree = "<group>"; };
 		C6784BB21D707D1B00D4687E /* F2FClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F2FClient.swift; sourceTree = "<group>"; };
 		C6784BB61D7092AD00D4687E /* FridgeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeTableViewController.swift; sourceTree = "<group>"; };
 		C6784BB81D7092CC00D4687E /* RecipeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 				C64C61A71D747394006F2376 /* Ingredient+CoreDataProperties.swift */,
 				C64C61A81D747394006F2376 /* Ingredient.swift */,
 				C64C61A21D745D77006F2376 /* Model.xcdatamodeld */,
+				C64C61AF1D7477EE006F2376 /* CoreDataStack.swift */,
 			);
 			name = CoreDataStack;
 			sourceTree = "<group>";
@@ -93,6 +100,8 @@
 				C6784BB81D7092CC00D4687E /* RecipeCollectionViewController.swift */,
 				C6784BBA1D7092E900D4687E /* BookmarksCollectionViewController.swift */,
 				C64C619F1D731FDE006F2376 /* DetailViewController.swift */,
+				C64C61AD1D747524006F2376 /* CoreDataDetailVC.swift */,
+				C64C61B11D747D1A006F2376 /* CoreDataBookmarksCVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -207,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64C61AE1D747524006F2376 /* CoreDataDetailVC.swift in Sources */,
 				C6784BBB1D7092E900D4687E /* BookmarksCollectionViewController.swift in Sources */,
 				C6784BB91D7092CC00D4687E /* RecipeCollectionViewController.swift in Sources */,
 				C64C61AC1D747394006F2376 /* Ingredient.swift in Sources */,
@@ -218,10 +228,12 @@
 				C64C61A01D731FDE006F2376 /* DetailViewController.swift in Sources */,
 				C64C61AB1D747394006F2376 /* Ingredient+CoreDataProperties.swift in Sources */,
 				C6784BB31D707D1B00D4687E /* F2FClient.swift in Sources */,
+				C64C61B01D7477EE006F2376 /* CoreDataStack.swift in Sources */,
 				C64C61A91D747394006F2376 /* Recipe+CoreDataProperties.swift in Sources */,
 				C64C61AA1D747394006F2376 /* Recipe.swift in Sources */,
 				C64C61A41D745D77006F2376 /* Model.xcdatamodeld in Sources */,
 				C6784BC51D71E30C00D4687E /* Constants.swift in Sources */,
+				C64C61B21D747D1A006F2376 /* CoreDataBookmarksCVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

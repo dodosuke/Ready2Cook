@@ -12,6 +12,15 @@ import CoreData
 
 class Ingredient: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    convenience init (ingredient:String, recipeId:String, recipe:Recipe, context: NSManagedObjectContext) {
+        if let ent = NSEntityDescription.entityForName("Ingredient", inManagedObjectContext: context){
+            self.init(entity:ent, insertIntoManagedObjectContext: context)
+            self.ingredient = ingredient
+            self.recipeId = recipeId
+            self.list = recipe
+        }else {
+            fatalError("")
+        }
+    }
 
 }

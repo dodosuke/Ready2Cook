@@ -19,7 +19,7 @@ struct Constants {
         
     }
     
-    // MARK: Flickr Parameter Keys
+    // MARK: Food2Fork Parameter Keys
     struct F2FParameterKeys {
         static let APIKey = "key"
         static let Query = "q"
@@ -27,14 +27,25 @@ struct Constants {
         static let RecipeID = "rId"
     }
     
-    // MARK: Flickr Parameter Values
+    // MARK: Food2Fork Parameter Values
     struct F2FParameterValues {
         static let APIKey = "50d489ef52311b8d0b403b58a398090a"
     }
     
-    enum Method {
-        case SEARCH
-        case GET
+    struct F2FResponseKeys {
+        static let Title = "title"
+        static let F2FURL = "f2f_url"
+        static let ImageURL = "image_url"
+        static let Publisher = "publisher"
+        static let PublisherURL = "publisher_url"
+        static let RecipeID = "recipe_id"
+        static let SocialRank = "soucial_rank"
+        static let Success = "success"
+        static let SourceURL = "source_url"
+        static let Count = "count"
+        static let Recipes = "recipes"
+        static let Recipe = "recipe"
+        static let Ingredients = "ingredients"
     }
-
+    
 }

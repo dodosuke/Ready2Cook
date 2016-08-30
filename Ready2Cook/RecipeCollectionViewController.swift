@@ -14,11 +14,14 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var collectionView: UICollectionView!
     
     let ud = NSUserDefaults.standardUserDefaults()
+    
     var items:[String] = []
     var count:Int = 0
     var imageURLs: [String] = []
     var titles: [String] = []
     var recipeIDs: [String] = []
+    
+    var images:[Int:NSData] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,27 +30,34 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
         collectionView.dataSource = self
         
         collectionViewFormat()
-        
         searchRecipe()
     }
-
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let detailViewer = storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         let recipeId = recipeIDs[indexPath.row]
         
+//        download ingredients' data and pass data to detail viewer
         SwiftLoading().showLoading()
         F2FClient.sharedInstance().getIngredientsFromF2F(recipeId) {(ingredients, source, errorString) in
-            if errorString == nil {
-                dispatch_async(dispatch_get_main_queue()) {
-                    print(ingredients,source)
+            dispatch_async(dispatch_get_main_queue()) {
+                if errorString == nil {
                     detailViewer.ingredients = ingredients!
+                    detailViewer.titleOfRecipe = self.titles[indexPath.row]
                     detailViewer.source = source!
+                    detailViewer.image = self.images[indexPath.row]
+                    detailViewer.recipeId = recipeId
+                    
                     SwiftLoading().hideLoading()
                     self.navigationController!.pushViewController(detailViewer, animated: true)
+                } else {
+                    self.displayError(errorString!)
+                    SwiftLoading().hideLoading()
                 }
+                
             }
+            
         }
     }
     
@@ -65,6 +75,7 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
             dispatch_async(dispatch_get_main_queue()) {
                 let imageURL = NSURL(string: self.imageURLs[indexPath.row])
                 if let imageData = NSData(contentsOfURL: imageURL!) {
+                    self.images[indexPath.row] = imageData
                     cell.imageForRecipe.image = UIImage(data: imageData)
                     cell.title.text = self.titles[indexPath.row]
                 }
@@ -82,18 +93,24 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
             items = udID as! [String]
         }
         
+//        download images
         SwiftLoading().showLoading()
         F2FClient.sharedInstance().getURLsFromF2F(items) {(count, URLs, titles, recipeIDs, errorString) in
-            if errorString == nil {
-                dispatch_async(dispatch_get_main_queue()) {
+            dispatch_async(dispatch_get_main_queue()) {
+                if errorString == nil {
                     self.count = count!
                     self.imageURLs = URLs!
                     self.titles = titles!
                     self.recipeIDs = recipeIDs!
                     self.collectionView.reloadData()
                     SwiftLoading().hideLoading()
+                } else {
+                    self.displayError(errorString!)
+                    SwiftLoading().hideLoading()
                 }
+                
             }
+            
         }
 
         
@@ -114,4 +131,17 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
         
     }
+    
+    private func displayError(error:String) {
+        print(error)
+        
+        let alert:UIAlertController = UIAlertController(title:"Alert", message: error, preferredStyle: .Alert)
+        
+        let cancelAction:UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {(action:UIAlertAction!) -> Void in})
+        
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
 }

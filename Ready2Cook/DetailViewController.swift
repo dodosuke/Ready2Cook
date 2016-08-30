@@ -7,23 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UITableViewController {
     
-    let ud = NSUserDefaults.standardUserDefaults()
-    var items:[String] = []
     var ingredients:[String] = []
+
+    var titleOfRecipe:String = ""
     var source:String = ""
+    var image:NSData? = nil
+    var recipeId:String = ""
+    
     var fav: Bool = false
     
     @IBOutlet weak var rightBarButton: UIBarButtonItem!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if let udID = ud.objectForKey("items") {
-            items = udID as! [String]
-        }
+        checkRecipe()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,10 +41,14 @@ class DetailViewController: UITableViewController {
         
         cell.textLabel?.text = ingredient
         
-//        change the color of ingredient's name, if you have in your fridge
-        for item in items {
-            if ingredient.containsString(item) {
-                cell.textLabel?.textColor = UIColor.redColor()
+//      Change the color of ingredient's name, if you have in your fridge
+        
+        if let udID = NSUserDefaults.standardUserDefaults().objectForKey("items") {
+            let items = udID as! [String]
+            for item in items {
+                if ingredient.containsString(item) {
+                    cell.textLabel?.textColor = UIColor.redColor()
+                }
             }
         }
         
@@ -56,18 +62,29 @@ class DetailViewController: UITableViewController {
         
     }
     
-    
+//    Add to a favorite list (Store the recipe)
     @IBAction func fav(sender: AnyObject) {
         
         if fav {
             rightBarButton.image = UIImage(named: "fav")
+            deleteRecipe(recipeId)
         } else {
             rightBarButton.image = UIImage(named: "fav_solid")
+            saveRecipe(titleOfRecipe, source: source, image: image!, recipeId: recipeId, ingredients: ingredients)
         }
         
         fav = !fav
-        
     }
     
-    
+//   judging the recipe is in the favorite lists
+    func checkRecipe() {
+        
+        let recipeIds = loadRecipeIDs()
+        for id in recipeIds {
+            if id == recipeId {
+                fav = true
+                rightBarButton.image = UIImage(named: "fav_solid")
+            }
+        }
+    }
 }

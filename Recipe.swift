@@ -13,7 +13,7 @@ import CoreData
 class Recipe: NSManagedObject {
 
     convenience init (title:String, source:String, image:NSData, recipeId:String, context: NSManagedObjectContext) {
-        if let ent = NSEntityDescription.entityForName("Location", inManagedObjectContext: context){
+        if let ent = NSEntityDescription.entityForName("Recipe", inManagedObjectContext: context){
             self.init(entity:ent, insertIntoManagedObjectContext: context)
             self.title = title
             self.source = source
