@@ -8,14 +8,14 @@
 
 import UIKit
 
-class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     let ud = NSUserDefaults.standardUserDefaults()
     
-    var items:[String] = []
     var count:Int = 0
     var imageURLs: [String] = []
     var titles: [String] = []
@@ -26,11 +26,16 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         collectionViewFormat()
-        searchRecipe()
+        
+        if let udID = ud.objectForKey("items") {
+            let items = udID as! [String]
+            searchRecipe(items)
+        }
+        
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -87,14 +92,10 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
     
     }
     
-    func searchRecipe() {
+    func searchRecipe(items:[String]) {
         
-        if let udID = ud.objectForKey("items") {
-            items = udID as! [String]
-        }
-        
-//        download images
         SwiftLoading().showLoading()
+        
         F2FClient.sharedInstance().getURLsFromF2F(items) {(count, URLs, titles, recipeIDs, errorString) in
             dispatch_async(dispatch_get_main_queue()) {
                 if errorString == nil {
@@ -104,22 +105,34 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
                     self.recipeIDs = recipeIDs!
                     self.collectionView.reloadData()
                     SwiftLoading().hideLoading()
+//     If there are too many items and no results, search with less items will be carried out
+                } else if errorString == "Retry" {
+                    var newItems = items
+                    newItems.removeLast()
+                    self.searchRecipe(newItems)
                 } else {
                     self.displayError(errorString!)
                     SwiftLoading().hideLoading()
                 }
-                
             }
-            
         }
-
-        
     }
+
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+        if let udID = ud.objectForKey("items") {
+            let items = [searchBar.text!] + (udID as! [String])
+            searchRecipe(items)
+        }
+    }
+
     
     @IBAction func refreshRecipe(sender: AnyObject) {
         
-        searchRecipe()
-        
+        if let udID = ud.objectForKey("items") {
+            let items = udID as! [String]
+            searchRecipe(items)
+        }
     }
     
     private func collectionViewFormat() {

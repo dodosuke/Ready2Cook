@@ -30,11 +30,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="What's in your Fridge?" id="Op7-qM-e6Z">
-                        <barButtonItem key="leftBarButtonItem" title="Hint" id="7Ss-w4-beW">
-                            <connections>
-                                <action selector="callHint:" destination="PcJ-NM-Svq" id="3xt-Ow-NyF"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="A3d-E2-VUN">
                             <connections>
                                 <action selector="addAnItem:" destination="PcJ-NM-Svq" id="z88-yt-2TI"/>
@@ -58,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="You can add more keywords" translatesAutoresizingMaskIntoConstraints="NO" id="dJh-Sb-ydl">
+                            <searchBar contentMode="redraw" placeholder="You can add a keyword" translatesAutoresizingMaskIntoConstraints="NO" id="dJh-Sb-ydl">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -137,6 +132,7 @@
                     <connections>
                         <outlet property="collectionView" destination="0Gd-ui-Jfx" id="zyJ-ex-L6y"/>
                         <outlet property="flowLayout" destination="oSz-Rh-vWd" id="3Wa-1S-n8Q"/>
+                        <outlet property="searchBar" destination="dJh-Sb-ydl" id="WxJ-6K-TwD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Per-tO-P08" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,11 +156,11 @@
             </objects>
             <point key="canvasLocation" x="588" y="1194"/>
         </scene>
-        <!--Favorites-->
+        <!--Navigation Controller-->
         <scene sceneID="ebC-lM-hdn">
             <objects>
                 <navigationController id="E2W-CP-VYD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="fav" id="ggT-j0-Cp4"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="ggT-j0-Cp4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0uy-ae-gwV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -234,9 +230,7 @@
                             <outlet property="delegate" destination="iyd-Z3-UWZ" id="8GI-0Z-M6f"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Bookmarks" id="YAn-tM-QFQ">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Delete" id="1Os-Xx-HBA"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Bookmarks" id="YAn-tM-QFQ"/>
                     <connections>
                         <outlet property="flowLayout" destination="Xsj-XV-dkf" id="2VM-cL-fl3"/>
                     </connections>

@@ -15,10 +15,10 @@ class F2FClient: NSObject {
         var imageURLs:[String] = []
         var titles:[String] = []
         var recipeIDs:[String] = []
-        let methodParameters: [String:AnyObject] = [
+        var methodParameters: [String:AnyObject] = [
             Constants.F2FParameterKeys.APIKey: Constants.F2FParameterValues.APIKey,
             Constants.F2FParameterKeys.Query: makeQuery(items!)
-        ]
+            ]
  
         // create session and request
         let session = NSURLSession.sharedSession()
@@ -57,18 +57,25 @@ class F2FClient: NSObject {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
 
                 if let count = parsedResult[Constants.F2FResponseKeys.Count] as? Int {
-                    if let results = parsedResult[Constants.F2FResponseKeys.Recipes] as? [[String:AnyObject]] {
-                        for result in results {
-                            if let imageURL = result[Constants.F2FResponseKeys.ImageURL] as? String {
-                                imageURLs.append(imageURL)
-                            }
-                            if let title = result[Constants.F2FResponseKeys.Title] as? String {
-                                titles.append(title)
-                            }
-                            if let recipeID = result[Constants.F2FResponseKeys.RecipeID] as? String {
-                                recipeIDs.append(recipeID)
+                    if count != 0 {
+                        if let results = parsedResult[Constants.F2FResponseKeys.Recipes] as? [[String:AnyObject]] {
+                            for result in results {
+                                if let imageURL = result[Constants.F2FResponseKeys.ImageURL] as? String {
+                                    imageURLs.append(imageURL)
+                                }
+                                if let title = result[Constants.F2FResponseKeys.Title] as? String {
+                                    titles.append(title)
+                                }
+                                if let recipeID = result[Constants.F2FResponseKeys.RecipeID] as? String {
+                                    recipeIDs.append(recipeID)
+                                }
                             }
                         }
+                    } else if items!.count == 1 {
+                        sendError("No Results")
+                    } else {
+//     If there are too many items and no results, search with less items will be carried out
+                        sendError("Retry")
                     }
                     
                     completionHandlerForF2F(count: count, URLs: imageURLs, titles: titles, recipeIDs: recipeIDs, errorString: nil)
@@ -188,12 +195,14 @@ class F2FClient: NSObject {
         return components.URL!
     }
     
-    private func makeQuery(items: [String]) -> String {
+    private func makeQuery(items: [String]?) -> String {
         
         var query:String = ""
         
-        for item in items {
-            query = query + "," + item
+        if items != nil {
+            for item in items! {
+                query = query + "," + item
+            }
         }
         
         return query

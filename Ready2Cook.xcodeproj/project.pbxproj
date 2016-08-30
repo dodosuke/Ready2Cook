@@ -84,8 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				C64C61A11D745D3D006F2376 /* CoreDataStack */,
-				C6784BB21D707D1B00D4687E /* F2FClient.swift */,
 				C6784BBC1D70955800D4687E /* RecipeCollectionViewCell.swift */,
+				C6784BB21D707D1B00D4687E /* F2FClient.swift */,
 				C6784BBE1D70956C00D4687E /* BookmarksCollectionViewCell.swift */,
 				C6784BC41D71E30C00D4687E /* Constants.swift */,
 				C6784BC61D72D84600D4687E /* LoadingProxy.swift */,
