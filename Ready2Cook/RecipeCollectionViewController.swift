@@ -77,15 +77,19 @@ class RecipeCollectionViewController: UIViewController, UICollectionViewDelegate
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecipeCollectionViewCell", forIndexPath: indexPath) as! RecipeCollectionViewCell
         
         if imageURLs != [] {
-            dispatch_async(dispatch_get_main_queue()) {
-                let imageURL = NSURL(string: self.imageURLs[indexPath.row])
-                if let imageData = NSData(contentsOfURL: imageURL!) {
-                    self.images[indexPath.row] = imageData
-                    cell.imageForRecipe.image = UIImage(data: imageData)
-                    cell.title.text = self.titles[indexPath.row]
+            if let image = images[indexPath.row] {
+                cell.imageForRecipe.image = UIImage(data: image)
+                cell.title.text = titles[indexPath.row]
+            } else {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let imageURL = NSURL(string: self.imageURLs[indexPath.row])
+                    if let imageData = NSData(contentsOfURL: imageURL!) {
+                        self.images[indexPath.row] = imageData
+                        cell.imageForRecipe.image = UIImage(data: imageData)
+                        cell.title.text = self.titles[indexPath.row]
+                    }
                 }
             }
-            
         }
         
         return cell
